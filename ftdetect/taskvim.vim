@@ -7,7 +7,6 @@
 " URL: http://joseluisdgz.com/projects/taskvim/
 " Version: 0.3
 " Last Change: 10/02/2012
- 
-augroup taskvim
-     au! BufRead,BufNewFile *.taskvim.txt set filetype=taskvim
-augroup END
+
+au! BufRead,BufNewFile todo.txt set filetype=todo
+au! BufRead,BufNewFile *.{todo,todo.txt} set filetype=todo

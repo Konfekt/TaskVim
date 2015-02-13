@@ -1,8 +1,23 @@
-*taskvim* TaskVim file-type plugin and syntax file
+This is a fork of TaskVim (10th February 2012) by Jose Luis Diaz Gonzalez
 
-Jose Luis Diaz Gonzalez <joseluisdgz@me.com>
+Changes:
 
-10th February 2012
+- A Todo List is a file
+    - whose name is `todo.txt`, or
+    - whose name ends in `.todo` or `.todo.txt`
+- A Quickstart help ( = TL;DR) has been added which
+  opens if you hit `<F1>` in a Todo List
+
+===
+
+- This fork only provides
+    - filetype detection of Todo Lists (in /ftdetect/)
+    - syntax highlighting of Todo Lists (in /syntax/),
+    - formatting and display options of Todo Lists (in /ftplugin/),
+    - a documentation of Todo Lists (in /doc/), and
+    - a key `<F1>` to access the Quickstart help.
+
+---
 
 [TaskVim](http://skitch.com/joseluisdgz/8ytar/taskvim)
 

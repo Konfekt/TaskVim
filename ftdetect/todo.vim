@@ -8,5 +8,4 @@
 " Version: 0.3
 " Last Change: 10/02/2012
 
-au! BufRead,BufNewFile todo.txt set filetype=todo
-au! BufRead,BufNewFile *.{todo,todo.txt} set filetype=todo
+au BufRead,BufNewFile,BufFilePost todo.txt,*.{todo,todo.txt} set filetype=todo

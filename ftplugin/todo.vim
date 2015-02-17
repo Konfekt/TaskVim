@@ -14,6 +14,9 @@ if exists("b:loaded_todo")
 endif
 let b:loaded_todo = 1
 
+let s:save_cpo = &cpo
+set cpo&vim
+
 " Autocreate list items
 setlocal comments+=b:—,
 setlocal formatoptions=qro1
@@ -28,7 +31,9 @@ setlocal nolist
 
 "fold projects
 setlocal foldmethod=syntax
-setlocal foldlevel=1
 
 nnoremap <buffer> <F1> :help todo-quickstart<cr>zt
 inoremap <buffer> <F1> <c-o>:help todo-quickstart<cr>zt
+
+let &cpo = s:save_cpo
+unlet s:save_cpo

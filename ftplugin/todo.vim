@@ -1,13 +1,3 @@
-" plugin to handle the TaskVim to-do list format
-" inspired by TaskPaper http://hogbaysoftware.com/projects/taskpaper
-" 'stealed' some code and learned a lot from the great plugin TaskPaper for Vim by David O'Callaghan
-" http://www.cs.tcd.ie/David.OCallaghan/taskpaper.vim/
-" Language: TaskVim
-" Maintainer: Jose Luis Diaz Gonzalez
-" URL: http://joseluisdgz.com/projects/taskvim/
-" Version: 0.3
-" Last Change: 10/02/2012
-
 " check if the plugin is already loaded
 if exists("b:loaded_todo")
     finish
@@ -24,7 +14,6 @@ setlocal formatoptions=qro1
 setlocal iskeyword+=@-@
 " Set up list formating 
 " almost perfect config for list handling
-setlocal autoindent
 setlocal textwidth=0
 setlocal wrapmargin=0
 setlocal nolist
@@ -32,8 +21,26 @@ setlocal nolist
 "fold projects
 setlocal foldmethod=syntax
 
-nnoremap <buffer> <F1> :help todo-quickstart<cr>zt
-inoremap <buffer> <F1> <c-o>:help todo-quickstart<cr>zt
+nnoremap <buffer> <F1> :<c-u>help todo-quickstart<cr>zt
+inoremap <buffer> <F1> <c-o>:<c-u>help todo-quickstart<cr>zt
+
+setlocal autoindent
+setlocal indentexpr=TaskVimIndent()
+
+function! TaskVimIndent()
+  let l:prevnb_num = prevnonblank(v:lnum - 1)
+  if l:prevnb_num == 0 | return 0 | endif
+
+  let l:cur = getline(v:lnum)
+  let l:prev = getline(v:lnum-1)
+  let l:prevnb = getline(l:prevnb_num)
+
+  if l:prevnb =~# '\v:$'
+      return indent(l:prevnb_num) + shiftwidth()
+  endif
+
+  return -1
+endfunction
 
 let &cpo = s:save_cpo
 unlet s:save_cpo

@@ -39,7 +39,7 @@ function! TaskVimIndent()
       return indent(l:prevnb_num) + shiftwidth()
   endif
 
-  return -1
+  return indent(v:lnum-1)
 endfunction
 
 let &cpo = s:save_cpo
